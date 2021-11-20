@@ -27,6 +27,7 @@ class SimpleRichTextBlock(blocks.StructBlock):
         icon = "pilcrow"
         template = "streamfieldblocks/simple_richtext_block.html"
 
+
 class CarouselBlock(blocks.StreamBlock):
     image = ImageChooserBlock()
 
@@ -43,3 +44,13 @@ class FlushListBlock(blocks.StructBlock):
     class Meta:
         icon = "list-ul"
         template = "streamfieldblocks/flush_list_block.html"
+
+
+class TimelineBlock(blocks.StructBlock):
+    title = blocks.CharBlock(max_length=100)
+    text = blocks.TextBlock()
+    date = blocks.DateBlock()
+
+    class Meta:
+        icon = "placeholder"
+        template = "streamfieldblocks/timeline_block.html"

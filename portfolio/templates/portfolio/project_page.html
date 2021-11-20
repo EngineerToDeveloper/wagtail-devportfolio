@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+<section class="container">
+    <div class="row">
+        <div class="col">
+            <article>
+                {% image page.image original as img %}
+                <img src="{{ img.url }}" alt="{{ img.alt }}" class="img-fluid">
+                <h1>{{ page.project_title }}</h1>
+                <p>{{ page.date }}</p>
+                <main>
+                    {% for block in page.content %}
+                    {% include_block block %}
+                    {% endfor %}
+
+                    <h2>Testimonial</h2>
+                    <blockquote class="blockquote">
+                        <p>{{ page.testimonials.testimony }}</p>
+                        <footer class="blockquote-footer">
+                            <cite>{{ page.testimonials.reviewer }}</cite>
+                        </footer>
+                    </blockquote>
+                </main>
+            </article>
+        </div>
+    </div>
+</section>
+{% endblock %}

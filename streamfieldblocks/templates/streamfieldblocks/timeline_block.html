@@ -1,0 +1,18 @@
+<div class="col-1 position-relative">
+    <div class="bar"></div>
+    <div class="date-container d-flex flex-column flex-md-row align-items-center ">
+        <div class="date d-none d-md-block">{{ self.date.year }}</div>
+        <div class="dot "></div>
+    </div>
+</div>
+<div class="col-11 py-4">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <h5>{{ self.title }}</h5>
+                <div class="d-md-none date">{{ self.date.year }}</div>
+            </div>
+            <p>{{ self.text }}</p>
+        </div>
+    </div>
+</div>
