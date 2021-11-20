@@ -33,3 +33,13 @@ class CarouselBlock(blocks.StreamBlock):
     class Meta:
         icon = "cog"
         template = "streamfieldblocks/carousel_block.html"
+        
+
+class FlushListBlock(blocks.StructBlock):
+    items = blocks.ListBlock(
+        blocks.TextBlock(help_text="List item's body text.")
+    )
+
+    class Meta:
+        icon = "list-ul"
+        template = "streamfieldblocks/flush_list_block.html"

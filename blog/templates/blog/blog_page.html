@@ -11,8 +11,6 @@
 
             <div class="intro">{{ page.intro }}</div>
 
-            {{ page.body|richtext }}
-
             <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
         </div>
     </div>
@@ -20,9 +18,11 @@
 
 <!-- StreamField Content -->
 <section>
- {% for block in page.main_content %}
-   {% include_block block %}
- {% endfor %}
+    <div class="container">
+        {% for block in page.main_content %}
+            {% include_block block %}
+        {% endfor %}
+    </div>
 </section>
 <!-- End StreamField Content -->
 {% endblock %}

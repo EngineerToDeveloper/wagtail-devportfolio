@@ -10,6 +10,7 @@ from streamfieldblocks.models import (
     CardBlock, 
     SimpleRichTextBlock, 
     CarouselBlock,
+    FlushListBlock,
 )
 
 class BlogListingPage(Page):
@@ -50,6 +51,7 @@ class BlogPage(Page):
         ('responsive_image', ResponsiveImageBlock()),
         ('card', CardBlock()),
         ('carousel', CarouselBlock()),
+        ('flush_list', FlushListBlock()),
         ('richtext', SimpleRichTextBlock()),
     ], blank=True)
 
