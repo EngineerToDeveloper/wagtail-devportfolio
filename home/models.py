@@ -1,4 +1,5 @@
 from django.db import models
+from blog.models import BlogPage
 
 from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
@@ -39,3 +40,8 @@ class HomePage(Page):
         FieldPanel("cta_btn_text"),
         PageChooserPanel("cta_btn_link"),
     ] 
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['featured_articles'] = BlogPage.objects.live().filter(featured=True)
+        return context

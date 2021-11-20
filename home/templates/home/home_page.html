@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% load static %}
+
+{% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
@@ -22,4 +23,27 @@
         </div>
     </div>
 </section>
+
+<!-- Featured Blog Articles -->
+<section class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Featured Articles</h2>
+            <div class="row">
+                {% for article in featured_articles %}
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <p class="card-text">{{ article.intro }}</p>
+                            <a href="{% pageurl article %}" class="btn btn-primary">Read Post</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Featured Blog Articles -->
 {% endblock content %}

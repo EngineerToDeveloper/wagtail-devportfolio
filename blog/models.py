@@ -26,6 +26,8 @@ class BlogListingPage(Page):
         FieldPanel("headline_text"),
     ]
 
+    subpage_types = ["blog.BlogPage", ]
+
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
@@ -36,12 +38,14 @@ class BlogListingPage(Page):
 class BlogPage(Page):
     date = models.DateField("Article Date")
     intro = models.TextField("Introduction")
+    featured = models.BooleanField(default=False)
     body = RichTextField(
         blank=True,
     )
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
+        FieldPanel('featured'),
         FieldPanel('intro'),
         FieldPanel('body', classname="full"),
     ]
