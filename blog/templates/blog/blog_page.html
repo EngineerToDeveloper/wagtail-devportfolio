@@ -17,4 +17,12 @@
         </div>
     </div>
 </section>
+
+<!-- StreamField Content -->
+<section>
+ {% for block in page.main_content %}
+   {% include_block block %}
+ {% endfor %}
+</section>
+<!-- End StreamField Content -->
 {% endblock %}

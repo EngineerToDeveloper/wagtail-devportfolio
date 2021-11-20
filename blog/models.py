@@ -1,9 +1,16 @@
 from django.db import models
 
 from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.core import blocks
+from wagtail.core.fields import StreamField
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel 
-from wagtail.core.fields import RichTextField
+from streamfieldblocks.models import (
+    ResponsiveImageBlock, 
+    CardBlock, 
+    SimpleRichTextBlock, 
+    CarouselBlock,
+)
 
 class BlogListingPage(Page):
     background_image = models.ForeignKey(
@@ -39,13 +46,18 @@ class BlogPage(Page):
     date = models.DateField("Article Date")
     intro = models.TextField("Introduction")
     featured = models.BooleanField(default=False)
-    body = RichTextField(
-        blank=True,
-    )
+    main_content = StreamField([
+        ('responsive_image', ResponsiveImageBlock()),
+        ('card', CardBlock()),
+        ('carousel', CarouselBlock()),
+        ('richtext', SimpleRichTextBlock()),
+    ], blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         FieldPanel('featured'),
         FieldPanel('intro'),
-        FieldPanel('body', classname="full"),
+        StreamFieldPanel('main_content'),
     ]
+
+    subpage_types = []
