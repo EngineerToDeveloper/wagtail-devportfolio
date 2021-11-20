@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'search',
     'blog',
     'streamfieldblocks',
+    'snippets',
+    'portfolio',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
