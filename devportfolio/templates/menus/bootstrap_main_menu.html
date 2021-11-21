@@ -1,0 +1,12 @@
+{% load menu_tags %}
+
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    {% for item in menu_items %}
+        <li class="nav-item {{ item.active_class }}">
+            <a href="{{ item.href }}" class="nav-link">{{ item.text }}</a>
+            {% if item.has_children_in_menu %}
+                {% sub_menu item %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
