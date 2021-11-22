@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'streamfieldblocks',
     'snippets',
     'portfolio',
+    'sitesettings',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'wagtail.contrib.modeladmin',
+    'wagtail.contrib.settings',
 
     'modelcluster',
     'taggit',
@@ -84,6 +86,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'wagtailmenus.context_processors.wagtailmenus',
+                'wagtail.contrib.settings.context_processors.settings',
             ],
         },
     },
